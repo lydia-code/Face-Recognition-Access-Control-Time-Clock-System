@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>員工考勤系統</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-4">員工考勤系統</h1>
+
+      <ul class="nav nav-tabs mt-4">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#employee-list"
+            >員工列表</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#attendance-records"
+            >員工打卡紀錄</a
+          >
+        </li>
+      </ul>
+
+      <div class="tab-content mt-4">
+        <div id="employee-list" class="tab-pane active">
+          <h2>員工列表</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>員工編號</th>
+                <th>姓名</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 在這裡使用 Jinja2 循環展示員工資料 -->
+            </tbody>
+          </table>
+        </div>
+        <div id="attendance-records" class="tab-pane">
+          <h2>員工打卡紀錄</h2>
+          <form id="attendance-form" class="form-inline mb-3">
+            <label for="employee-id" class="mr-2">員工編號：</label>
+            <input
+              type="text"
+              class="form-control mr-2"
+              id="employee-id"
+              name="employee-id"
+            />
+
+            <label for="employee-name" class="mr-2">姓名：</label>
+            <select
+              class="form-control mr-2"
+              id="employee-name"
+              name="employee-name"
+            >
+              <option value="">請選擇</option>
+              <!-- 在這裡使用 Jinja2 循環生成選項 -->
+            </select>
+
+            <label for="start-date" class="mr-2">起始日期：</label>
+            <input
+              type="date"
+              class="form-control mr-2"
+              id="start-date"
+              name="start-date"
+            />
+
+            <label for="end-date" class="mr-2">結束日期：</label>
+            <input
+              type="date"
+              class="form-control mr-2"
+              id="end-date"
+              name="end-date"
+            />
+
+            <button type="submit" class="btn btn-primary">查詢</button>
+          </form>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>時間</th>
+                <th>姓名</th>
+                <th>員工編號</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 在這裡使用 Jinja2 循環展示打卡記錄 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+  </body>
+</html>
